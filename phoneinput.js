@@ -1,17 +1,17 @@
 document.addEventListener("DOMContentLoaded", function () {
-    let phoneInputs = document.querySelectorAll('input[data-tel-input]');
+    var phoneInputs = document.querySelectorAll('input[data-tel-input]');
 
-    let getInputNumbersValue = function (input) {
+    var getInputNumbersValue = function (input) {
         // Return stripped input value — just numbers
         return input.value.replace(/\D/g, '');
     }
 
-    let onPhonePaste = function (e) {
-        let input = e.target,
+    var onPhonePaste = function (e) {
+        var input = e.target,
             inputNumbersValue = getInputNumbersValue(input);
-        let pasted = e.clipboardData || window.clipboardData;
+        var pasted = e.clipboardData || window.clipboardData;
         if (pasted) {
-            let pastedText = pasted.getData('Text');
+            var pastedText = pasted.getData('Text');
             if (/\D/g.test(pastedText)) {
                 // Attempt to paste non-numeric symbol — remove all non-numeric symbols,
                 // formatting will be in onPhoneInput handler
@@ -21,8 +21,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    let onPhoneInput = function (e) {
-        let input = e.target,
+    var onPhoneInput = function (e) {
+        var input = e.target,
             inputNumbersValue = getInputNumbersValue(input),
             selectionStart = input.selectionStart,
             formattedInputValue = "";
@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (["7", "8", "9"].indexOf(inputNumbersValue[0]) > -1) {
             if (inputNumbersValue[0] == "9") inputNumbersValue = "7" + inputNumbersValue;
-            let firstSymbols = (inputNumbersValue[0] == "8") ? "8" : "+7";
+            var firstSymbols = (inputNumbersValue[0] == "8") ? "8" : "+7";
             formattedInputValue = input.value = firstSymbols + " ";
             if (inputNumbersValue.length > 1) {
                 formattedInputValue += '(' + inputNumbersValue.substring(1, 4);
@@ -61,14 +61,14 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         input.value = formattedInputValue;
     }
-    let onPhoneKeyDown = function (e) {
+    var onPhoneKeyDown = function (e) {
         // Clear input after remove last symbol
-        let inputValue = e.target.value.replace(/\D/g, '');
+        var inputValue = e.target.value.replace(/\D/g, '');
         if (e.keyCode == 8 && inputValue.length == 1) {
             e.target.value = "";
         }
     }
-    for (let phoneInput of phoneInputs) {
+    for (var phoneInput of phoneInputs) {
         phoneInput.addEventListener('keydown', onPhoneKeyDown);
         phoneInput.addEventListener('input', onPhoneInput, false);
         phoneInput.addEventListener('paste', onPhonePaste, false);
