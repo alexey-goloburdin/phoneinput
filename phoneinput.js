@@ -28,6 +28,9 @@ document.addEventListener("DOMContentLoaded", function () {
             formattedInputValue = "";
 
         if (!inputNumbersValue) {
+            if (e.data === '+'){
+                return input.value = "+";
+            }
             return input.value = "";
         }
 
@@ -64,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var onPhoneKeyDown = function (e) {
         // Clear input after remove last symbol
         var inputValue = e.target.value.replace(/\D/g, '');
-        if (e.keyCode == 8 && inputValue.length == 1) {
+        if (e.keyCode == 8 && inputValue.length <= 1) {
             e.target.value = "";
         }
     }
