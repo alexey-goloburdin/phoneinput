@@ -1,15 +1,13 @@
-Input for Russian phone numbers. Other countries phones works as well, but without mask.
+Маска ввода номера телефона для российских номеров телефона.
 
-Example — [phoneinput.to.digital](phoneinput.to.digital)
+Пример работы — [phoneinput.to.digital](phoneinput.to.digital).
 
-See [Video](https://www.youtube.com/watch?v=Lxj_v5z0xRE) about writing this script and why should you use it.
+Другие страные не игнорируются, номера нероссийских тефонов успешно вводятся, но оставляются без маски. Посмотрите [видео](https://www.youtube.com/watch?v=Lxj_v5z0xRE) о процессе написания маски и о том, почему её нужно использовать.
 
-
-How to use
+Как использовать
 ------------------
 
 ```html
-
 <html>
 <head>
     <script src="phoneinput.js"></script>
@@ -20,4 +18,4 @@ How to use
 </html>
 ```
 
-JS code in `phoneinput.js` will find all `input` with `data-tel-input` attribute and process it.
+JS код в `phoneinput.js` найдет все элементы `input` с `data-tel-input` атрибутом и обработает их.
