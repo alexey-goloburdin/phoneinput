@@ -62,10 +62,22 @@ document.addEventListener("DOMContentLoaded", function () {
         input.value = formattedInputValue;
     }
     var onPhoneKeyDown = function (e) {
-        // Clear input after remove last symbol
         var inputValue = e.target.value.replace(/\D/g, '');
         if (e.keyCode == 8 && inputValue.length == 1) {
+            // Clear input after remove last symbol
             e.target.value = "";
+        } else if ([8, 46].indexOf(e.keyCode) > -1 && inputValue.length > 1) {
+            // Prevent when removing service symbols
+            var symToClear
+            switch (e.keyCode) {
+                case 8: // BackSpace key
+                    symToClear = e.target.value[e.target.selectionStart - 1];
+                    break;
+                case 46: // Delete key
+                    symToClear = e.target.value[e.target.selectionStart];
+                    break;
+            }
+            if (symToClear && /\D/.test(symToClear)) e.preventDefault();
         }
     }
     for (var phoneInput of phoneInputs) {
