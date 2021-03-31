@@ -33,6 +33,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (input.value.length != selectionStart) {
             // Editing in the middle of input, not last symbol
+            if (input.value[0] != '+'){ // Add "+" if input value startswith not "+"
+                var oldSelectionStart = input.selectionStart
+                input.value = '+' + input.value;
+                input.selectionStart = input.selectionEnd = oldSelectionStart + 1
+            }
             if (e.data && /\D/g.test(e.data)) {
                 // Attempt to input non-numeric symbol
                 input.value = inputNumbersValue;
