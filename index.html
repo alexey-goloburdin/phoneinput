@@ -1,0 +1,37 @@
+<html>
+<head>
+    <title>Phone input</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="phoneinput.js"></script>
+
+    <!-- Optional cosmetic CSS -->
+    <style type="text/css">
+        * {padding: 0px; margin: 0px;}
+        body{
+            height: 100%; width: 100%;
+            display: flex; flex-direction: column;
+            align-items: center; justify-items: center;
+        }
+        input {
+            font-size: 30px; padding: 15px; border: 1px solid #ccc;
+            min-width: 300px; max-width: 400px; width: 90%;}
+        input:focus {outline: none;}
+        .placeholder{flex: 1;}
+    </style>
+
+    <!-- Optional cosmetic JS -->
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function(){
+            document.querySelector('input').focus();
+        })
+    </script>
+
+</head>
+<body>
+    <div class="placeholder"></div>
+    <input type="tel" data-tel-input placeholder="Телефон" maxlength="18" />
+    <div class="placeholder"></div>
+</body>
+</html>
