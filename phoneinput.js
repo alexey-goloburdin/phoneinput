@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
             formattedInputValue = "";
 
         if (!inputNumbersValue) {
-            return input.value = "";
+            return input.value = (e.data == "+") ? "+" : "";
         }
 
         if (input.value.length != selectionStart) {
