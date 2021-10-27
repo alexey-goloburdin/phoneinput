@@ -34,8 +34,9 @@ document.addEventListener("DOMContentLoaded", function () {
         if (input.value.length != selectionStart) {
             // Editing in the middle of input, not last symbol
             if (e.data && /\D/g.test(e.data)) {
-                // Attempt to input non-numeric symbol
-                input.value = inputNumbersValue;
+                input.value = input.value.replace(e.data, '');
+                input.selectionStart = selectionStart - 1;
+                input.selectionEnd = input.selectionStart;
             }
             return;
         }
